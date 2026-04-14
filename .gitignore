@@ -2,3 +2,4 @@ _metadata/
 .DS_Store
 *.zip
 *.crx
+installer/windows/dist/
