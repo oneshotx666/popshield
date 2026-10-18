@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SC WebGuard</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo">
+        <img src="../icons/icon128.png" class="shield-icon" alt="SC WebGuard logo" />
+        <span class="name">SC WebGuard</span>
+      </div>
+    </header>
+
+    <!-- Nav -->
+    <nav class="nav">
+      <button class="nav-btn nav-btn--active" data-panel="panel-overview">Overview</button>
+      <button class="nav-btn" data-panel="panel-tabs">Tabs</button>
+    </nav>
+
+    <!-- Panel: Overview -->
+    <div class="panel panel--active" id="panel-overview">
+      <div class="toggle-row">
+        <span class="toggle-label off" id="status-label">Disabled</span>
+        <label class="switch" aria-label="Toggle SC WebGuard">
+          <input type="checkbox" id="toggle" />
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="stats" id="stats-section">
+        <div class="stat">
+          <span class="stat-value" id="tab-count">0</span>
+          <span class="stat-desc">tabs blocked</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value" id="overlay-count">0</span>
+          <span class="stat-desc">overlays removed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel: Tabs -->
+    <div class="panel" id="panel-tabs">
+      <p class="tabs-hint">Toggle blocking per tab. Overrides the global setting.</p>
+      <div class="tabs-list" id="tabs-list"></div>
+    </div>
+
+    <footer>
+      <span id="footer-label">Inactive — enable to start blocking</span>
+    </footer>
+
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

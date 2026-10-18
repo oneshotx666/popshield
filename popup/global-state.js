@@ -2,12 +2,12 @@
 
 export async function loadGlobalState({ toggle, statusLabel, tabCount, overlayCount, onStateChange }) {
   chrome.storage.local.get(
-    { popshield_enabled: true, blocked_tabs: 0, blocked_overlays: 0 },
+    { scwebguard_enabled: false, blocked_tabs: 0, blocked_overlays: 0 },
     (data) => {
-      applyState(data.popshield_enabled, { toggle, statusLabel });
+      applyState(data.scwebguard_enabled, { toggle, statusLabel });
       tabCount.textContent = data.blocked_tabs;
       overlayCount.textContent = data.blocked_overlays;
-      onStateChange(data.popshield_enabled);
+      onStateChange(data.scwebguard_enabled);
     }
   );
 }
@@ -15,7 +15,7 @@ export async function loadGlobalState({ toggle, statusLabel, tabCount, overlayCo
 export function bindGlobalToggle({ toggle, statusLabel, onStateChange }) {
   toggle.addEventListener("change", () => {
     const enabled = toggle.checked;
-    chrome.storage.local.set({ popshield_enabled: enabled });
+    chrome.storage.local.set({ scwebguard_enabled: enabled });
     applyState(enabled, { toggle, statusLabel });
     onStateChange(enabled);
 

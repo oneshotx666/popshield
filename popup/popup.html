@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PopShield</title>
+  <title>SC WebGuard</title>
   <link rel="stylesheet" href="popup.css" />
 </head>
 <body>
@@ -11,8 +11,8 @@
 
     <header>
       <div class="logo">
-        <span class="shield">🛡</span>
-        <span class="name">PopShield</span>
+        <img src="../icons/icon128.png" class="shield-icon" alt="SC WebGuard logo" />
+        <span class="name">SC WebGuard</span>
       </div>
     </header>
 
@@ -20,15 +20,14 @@
     <nav class="nav">
       <button class="nav-btn nav-btn--active" data-panel="panel-overview">Overview</button>
       <button class="nav-btn" data-panel="panel-tabs">Tabs</button>
-      <button class="nav-btn" data-panel="panel-whitelist">Whitelist</button>
     </nav>
 
     <!-- Panel: Overview -->
     <div class="panel panel--active" id="panel-overview">
       <div class="toggle-row">
-        <span class="toggle-label" id="status-label">Enabled</span>
-        <label class="switch" aria-label="Toggle PopShield">
-          <input type="checkbox" id="toggle" checked />
+        <span class="toggle-label off" id="status-label">Disabled</span>
+        <label class="switch" aria-label="Toggle SC WebGuard">
+          <input type="checkbox" id="toggle" />
           <span class="slider"></span>
         </label>
       </div>
@@ -52,13 +51,8 @@
       <div class="tabs-list" id="tabs-list"></div>
     </div>
 
-    <!-- Panel: Whitelist -->
-    <div class="panel" id="panel-whitelist">
-      <div class="wl-panel" id="whitelist-container"></div>
-    </div>
-
     <footer>
-      <span id="footer-label">Active on all sites</span>
+      <span id="footer-label">Inactive — enable to start blocking</span>
     </footer>
 
   </div>

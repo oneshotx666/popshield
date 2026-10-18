@@ -32,7 +32,7 @@ function isClickjackLayer(el) {
 }
 
 function removeClickjackLayers() {
-  if (!window.__popshield?.enabled) return;
+  if (!window.__scwebguard?.enabled) return;
   let removed = 0;
   const candidates = document.querySelectorAll('a[href], [onclick]');
   for (const el of candidates) {
@@ -54,7 +54,7 @@ function installClickInterceptor() {
   document.addEventListener(
     "click",
     (e) => {
-      if (!window.__popshield?.enabled) return;
+      if (!window.__scwebguard?.enabled) return;
       const target = e.target;
       if (!target) return;
       if (isClickjackLayer(target)) {

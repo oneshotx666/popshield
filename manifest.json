@@ -1,14 +1,14 @@
 {
   "manifest_version": 3,
-  "name": "PopShield",
+  "name": "SC WebGuard",
   "version": "1.0.0",
-  "description": "Blocks new-tab popups and in-page overlays on every site.",
+  "description": "Block popup tabs, cookie banners, overlays, and clickjack ads on every site. Per-tab control and zero tracking.",
 
   "permissions": [
     "storage",
     "declarativeNetRequest",
     "tabs",
-    "scripting"
+    "webNavigation"
   ],
 
   "host_permissions": ["<all_urls>"],
@@ -21,15 +21,28 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
+      "js": ["content/page-popup-guard.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "match_origin_as_fallback": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": ["<all_urls>"],
       "js": [
         "content/state.js",
+        "content/navigation-guard.js",
         "content/clickjack-blocker.js",
         "content/overlay-blocker.js",
         "content/scroll-lock-fixer.js",
+        "content/new-tab-hint.js",
         "content/observer.js"
       ],
       "run_at": "document_start",
-      "all_frames": true
+      "all_frames": true,
+      "match_about_blank": true,
+      "match_origin_as_fallback": true
     }
   ],
 
@@ -42,7 +55,6 @@
       }
     ]
   },
-
 
   "action": {
     "default_popup": "popup/popup.html",
@@ -57,5 +69,12 @@
     "16":  "icons/icon16.png",
     "48":  "icons/icon48.png",
     "128": "icons/icon128.png"
-  }
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": ["welcome/*", "icons/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }

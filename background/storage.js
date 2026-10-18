@@ -1,11 +1,11 @@
-const KEY = "popshield_enabled";
+const KEY = "scwebguard_enabled";
 
 /**
  * Returns true if the extension is currently enabled.
- * Defaults to true on first install.
+ * Defaults to false on first install — user opts in per site or globally.
  */
 export async function isEnabled() {
-  const result = await chrome.storage.local.get({ [KEY]: true });
+  const result = await chrome.storage.local.get({ [KEY]: false });
   return result[KEY];
 }
 

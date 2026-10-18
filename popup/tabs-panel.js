@@ -1,6 +1,6 @@
 // popup/tabs-panel.js
 
-const STORAGE_KEY = "popshield_tab_overrides";
+const STORAGE_KEY = "scwebguard_tab_overrides";
 
 async function loadTabOverrides() {
   return new Promise((resolve) => {
